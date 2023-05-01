@@ -34,10 +34,35 @@
 
 
 
+        anchor_y: 'center'
+        size_hint: .1,.125
+        Button:#Settings
+            size: (50,50)
+            border: (0, 0, 0, 0)
+            background_normal: './assets/gui/main/setting_icon.png'
+            background_down: './assets/gui/main/setting_icon_pressed.png'
+            opacity: 0.5
+        Button:#Map
+            size_hint: (None, None)
+            size: (50,50)
+            border: (0, 0, 0, 0)
+            background_normal: './assets/gui/main/compass_icon.png'
+            background_down: './assets/gui/main/compass_icon_pressed.png'
+            opacity: 0.5
+        Button:#Inventory
+            size_hint: (None, None)
+            size: (50,50)
+            border: (0, 0, 0, 0)
+            background_normal: './assets/gui/main/backpack_icon.png'
+            background_down: './assets/gui/main/backpack_icon_pressed.png'
+            opacity: 0.5
 
 <Root>
     ScreenManager:
         id: screen_manager
+    RelativeLayout:
+        Map_lvl:
+        Control:
 
         Screen:
             name: 'menu'
