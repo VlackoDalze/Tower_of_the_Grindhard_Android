@@ -1,3 +1,4 @@
+
 <CustomLayout>
     canvas.before:
         Color:
@@ -35,3 +36,16 @@
 #     canvas.before:
 #         Rectangle:
 #             pos: '200dp','200dp'
+
+<Map_lvl>:
+    FloatLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+
+        AsyncImage:
+            source:  f'scene/level{root.lvl:02d}/_composite.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
