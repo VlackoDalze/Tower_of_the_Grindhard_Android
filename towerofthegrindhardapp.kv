@@ -32,11 +32,16 @@
             allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
 
-
-
+<Control>:
+    StackLayout:
+        orientation: 'tb-rl'
+        padding: (0, 10, 5, 0)
+        pos_hint: {'top': 1, 'right': 1}
+        anchor_x: 'right'#Para alinear el hijo es decir los botones
         anchor_y: 'center'
         size_hint: .1,.125
         Button:#Settings
+            size_hint: (None, None)
             size: (50,50)
             border: (0, 0, 0, 0)
             background_normal: './assets/gui/main/setting_icon.png'
