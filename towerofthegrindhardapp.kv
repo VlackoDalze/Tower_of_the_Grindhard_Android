@@ -1,3 +1,12 @@
+<SettingButton@Button>:
+    size_hint: (None, None)
+    size: (50,50)
+    border: (0, 0, 0, 0)
+    background_normal: './assets/gui/main/setting_icon.png'
+    background_down: './assets/gui/main/setting_icon_pressed.png'
+    opacity: 0.5
+    on_press: print('Settings')
+
 
 <Root>
     ScreenManager:
@@ -11,13 +20,7 @@
                     padding: (0, 10, 5, 0)
                     pos_hint: {'top': 1, 'right': 1}
                     size_hint: .1,.125
-                    Button:#Settings
-                        size_hint: (None, None)
-                        size: (50,50)
-                        border: (0, 0, 0, 0)
-                        background_normal: './assets/gui/main/setting_icon.png'
-                        background_down: './assets/gui/main/setting_icon_pressed.png'
-                        opacity: 0.5
+                    SettingButton:
         Screen:
             name: 'menu'
             RelativeLayout:
@@ -27,13 +30,7 @@
                     padding: (0, 10, 5, 0)
                     pos_hint: {'top': 1, 'right': 1}
                     size_hint: .1,.125
-                    Button:#Settings
-                        size_hint: (None, None)
-                        size: (50,50)
-                        border: (0, 0, 0, 0)
-                        background_normal: './assets/gui/main/setting_icon.png'
-                        background_down: './assets/gui/main/setting_icon_pressed.png'
-                        opacity: 0.5
+                    SettingButton:
         Screen:
             name: 'mapa'
             RelativeLayout:
@@ -122,14 +119,7 @@
         padding: (0, 10, 5, 0)
         pos_hint: {'top': 1, 'right': 1}
         size_hint: .1,.125
-        Button:#Settings
-            size_hint: (None, None)
-            size: (50,50)
-            border: (0, 0, 0, 0)
-            background_normal: './assets/gui/main/setting_icon.png'
-            background_down: './assets/gui/main/setting_icon_pressed.png'
-            opacity: 0.5
-            on_press: print('Opciones')
+        SettingButton:
         Button:#Map
             size_hint: (None, None)
             size: (50,50)

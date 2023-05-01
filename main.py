@@ -24,12 +24,12 @@ kivy.require('2.1.0')
 
 class TowerOfTheGrindhardApp(App):
     def build(self):
-        self.play_music_loop()
+        self.playMusicLoop()
         return Root()
 
-    def play_music_loop(self, *args):
+    def playMusicLoop(self, *args):
         SoundsMaster.playMusic()
-        Clock.schedule_once(self.play_music_loop, 2) # Ejecuta el método cada 1 segundos
+        Clock.schedule_once(self.playMusicLoop, 2) # Ejecuta el método cada 1 segundos
 
 
 if __name__ == '__main__':
