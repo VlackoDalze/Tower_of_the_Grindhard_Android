@@ -1,4 +1,5 @@
 from kivy.uix.floatlayout import FloatLayout
 
 class Control(FloatLayout):
-    pass
+    def movePlayer(self):
+        print("move")

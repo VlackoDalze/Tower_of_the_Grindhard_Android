@@ -1,11 +1,3 @@
-<CustomLayout>
-    canvas.before:
-        Color:
-            rgba: 0, 1, 0, 1
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
 <Root>
     ScreenManager:
         id: screen_manager
@@ -24,7 +16,7 @@
             RelativeLayout:
                 Map_lvl:
                 Control:   
-   
+
 <Login>
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
@@ -68,7 +60,7 @@
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
-   
+
         Image:
             source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
             size_hint: (None, None)  # desactiva tamaño
@@ -83,12 +75,14 @@
             on_press:  app.root.ids.screen_manager.current = 'mapa'
             size_hint: 0.25, 0.05
 
+        
+        
 
 <Map_lvl>:
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
-   
+
         Image:
             source:  f'scene/level{root.lvl:02d}/_composite.png' #establece el lvl, formato 0? 2digitos
             size_hint: (None, None)  # desactiva tamaño
@@ -102,8 +96,6 @@
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
         pos_hint: {'top': 1, 'right': 1}
-        anchor_x: 'right'#Para alinear el hijo es decir los botones
-        anchor_y: 'center'
         size_hint: .1,.125
         Button:#Settings
             size_hint: (None, None)
@@ -126,6 +118,50 @@
             background_normal: './assets/gui/main/backpack_icon.png'
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
+    FloatLayout:
+        size_hint: (None, None)
+        size: 100,100
+        pos: '75dp','75dp'
+        Button:#Derecha
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': .5, 'right': 1}
+            border: (0, 0, 0, 0)
+            text:'>'
+            on_press: print('Derecha')
+        Button:#Izquierda
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': .5, 'right': 0}
+            border: (0, 0, 0, 0)
+            text:'<'
+            on_press: print('Izquierda')
+        Button:#Arriba
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': 1, 'right': .5}
+            border: (0, 0, 0, 0)
+            text:'^'
+            on_press: print('Arriba')
+        Button:#Abajo
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': 0, 'right': .5}
+            border: (0, 0, 0, 0)
+            text:'!'
+            on_press: print('Abajo')
 
 
-
+<Root>
+    ScreenManager:
+        id: screen_manager
+        Screen:
+            name: 'menu'
+            RelativeLayout:
+                Menu:
+                Control:
+        Screen:
+            name: 'mapa'
+            RelativeLayout:
+                Map_lvl:
+                Control:
