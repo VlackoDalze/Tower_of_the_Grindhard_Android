@@ -6,24 +6,34 @@
             name: 'login'
             RelativeLayout:
                 Login:
-                Button:#Settings
-                    size_hint: (None, None)
-                    size: (50,50)
-                    border: (0, 0, 0, 0)
-                    background_normal: './assets/gui/main/setting_icon.png'
-                    background_down: './assets/gui/main/setting_icon_pressed.png'
-                    opacity: 0.5
+                StackLayout:
+                    orientation: 'tb-rl'
+                    padding: (0, 10, 5, 0)
+                    pos_hint: {'top': 1, 'right': 1}
+                    size_hint: .1,.125
+                    Button:#Settings
+                        size_hint: (None, None)
+                        size: (50,50)
+                        border: (0, 0, 0, 0)
+                        background_normal: './assets/gui/main/setting_icon.png'
+                        background_down: './assets/gui/main/setting_icon_pressed.png'
+                        opacity: 0.5
         Screen:
             name: 'menu'
             RelativeLayout:
                 Menu:
-                Button:#Settings
-                    size_hint: (None, None)
-                    size: (50,50)
-                    border: (0, 0, 0, 0)
-                    background_normal: './assets/gui/main/setting_icon.png'
-                    background_down: './assets/gui/main/setting_icon_pressed.png'
-                    opacity: 0.5
+                StackLayout:
+                    orientation: 'tb-rl'
+                    padding: (0, 10, 5, 0)
+                    pos_hint: {'top': 1, 'right': 1}
+                    size_hint: .1,.125
+                    Button:#Settings
+                        size_hint: (None, None)
+                        size: (50,50)
+                        border: (0, 0, 0, 0)
+                        background_normal: './assets/gui/main/setting_icon.png'
+                        background_down: './assets/gui/main/setting_icon_pressed.png'
+                        opacity: 0.5
         Screen:
             name: 'mapa'
             RelativeLayout:
