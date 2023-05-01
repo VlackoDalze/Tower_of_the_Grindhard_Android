@@ -22,7 +22,7 @@ from kivy.core.window import Window
 class Root(BoxLayout):
     pass
 
-class Control(Widget):
+class Control(FloatLayout):
     pass
 
 class Map_lvl(FloatLayout):
