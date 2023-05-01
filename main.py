@@ -19,7 +19,7 @@ from kivy.core.window import Window
 # class GameMap(Widget):
 #     pass
 
-class RootWidget(BoxLayout):
+class Root(BoxLayout):
     pass
 
 class Control(Widget):
@@ -34,13 +34,11 @@ class Map_lvl(FloatLayout):
         
 class TowerOfTheGrindhardApp(App):
     def build(self):
-
-        # return BoxLayout()
-        return RootWidget()
+        return Root()
     
     # def on_start(self): #maximizar
     #     Window.maximize()
- 
+
 if __name__ == '__main__':
     TowerOfTheGrindhardApp().run()
     
