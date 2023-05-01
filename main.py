@@ -1,4 +1,5 @@
 import kivy
+kivy.require('2.1.0')
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.vector import Vector
@@ -13,23 +14,13 @@ from kivy.uix.label import Label
 from kivy.app import App
 
 from scripts.map import Map_lvl #hacer esto para importar clases y que no pete al darle a run()
-
-kivy.require('2.1.0')
+from scripts.control import Control
 
 # class Player(Widget):
 #     pass
 
-
-# class GameMap(Widget):
-#     pass
-
 class Root(BoxLayout):
     pass
-
-
-class Control(FloatLayout):
-    pass
-
 
 class TowerOfTheGrindhardApp(App):
     def build(self):
