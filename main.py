@@ -25,7 +25,7 @@ class Root(BoxLayout):
     pass
 
 
-class Control(Widget):
+class Control(FloatLayout):
     pass
 
 
