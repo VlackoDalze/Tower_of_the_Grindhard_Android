@@ -1,13 +1,25 @@
-<BoxLayout>:
-    orientation:'horizontal'
-    Label:
-        text:'hellow'
-        font_size:64
-        color: 1,1,1
-    Label:
-        text:"-"
-        font_size:16
-    Button:
-        text:"Generate"
-        font_size:32
-        size: 200,200
+<CustomLayout>
+    canvas.before:
+        Color:
+            rgba: 0, 1, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<RootWidget>
+    FloatLayout:
+        StackLayout:
+            orientation: 'horizontal'
+            pos: '100dp','100dp'
+            size_hint: .4,.2
+            Button:
+                text: 'sdwasd1'
+            Button:
+                text: 'sasdfwe2'
+            Button:
+                text: 'sasdfwe4'
+
+# <Control>:
+#     canvas.before:
+#         Rectangle:
+#             pos: '200dp','200dp'
