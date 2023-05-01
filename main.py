@@ -15,6 +15,7 @@ from kivy.app import App
 from scripts.map import Map_lvl
 from scripts.control import Control
 from scripts.menu import Menu
+from scripts.login import Login
 from scripts.root import Root
 import kivy
 kivy.require('2.1.0')

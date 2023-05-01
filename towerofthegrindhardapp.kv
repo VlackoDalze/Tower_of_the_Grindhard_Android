@@ -6,6 +6,64 @@
             pos: self.pos
             size: self.size
 
+<Root>
+    ScreenManager:
+        id: screen_manager
+        Screen:
+            name: 'login'
+            RelativeLayout:
+                Login:
+                Control:
+        Screen:
+            name: 'menu'
+            RelativeLayout:
+                Menu:
+                Control:
+        Screen:
+            name: 'mapa'
+            RelativeLayout:
+                Map_lvl:
+                Control:   
+   
+<Login>
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_icon.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+    
+        TextInput:
+            id: username_input
+            hint_text: 'Username' #hint
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55} #ubicacion
+            multiline: False
+            size_hint: 0.25, None #ancho
+            height: self.minimum_height #latura minima
+            halign: 'center' #centrado
+
+        TextInput:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            multiline: False
+            size_hint: 0.25, None
+            height: self.minimum_height
+            halign: 'center'
+
+        Button:
+            text: 'Login'
+            size_hint: 0.8, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            on_press:  app.root.ids.screen_manager.current = 'menu'
+            size_hint: 0.25, 0.05
+                
 <Menu>
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
@@ -18,6 +76,13 @@
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
             allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Select'
+            size_hint: 0.8, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            on_press:  app.root.ids.screen_manager.current = 'mapa'
+            size_hint: 0.25, 0.05
+
 
 <Map_lvl>:
     RelativeLayout:
@@ -62,18 +127,5 @@
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
 
-<Root>
-    ScreenManager:
-        id: screen_manager
-        Screen:
-            name: 'menu'
-            RelativeLayout:
-                Menu:
-                Control:
-        Screen:
-            name: 'mapa'
-            RelativeLayout:
-                Map_lvl:
-                Control:   
-   
+
 
