@@ -65,63 +65,18 @@
 <Root>
     ScreenManager:
         id: screen_manager
-    RelativeLayout:
-        Map_lvl:
-        Control:
+   
+        
 
         Screen:
             name: 'menu'
             RelativeLayout:
                 Menu:
-                FloatLayout:
-                    StackLayout:
-                        orientation: 'tb-rl'
-                        padding: (0, 5, 10, 5)
-                        pos_hint: {'top': 1, 'right': 1}
-                        anchor_x: 'right'#Para alinear el hijo es decir los botones
-                        anchor_y: 'center'
-                        size_hint: .1,.125
-                        Button:#Settings
-                            # size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/setting_icon.png'
-                            background_down: './assets/gui/main/setting_icon_pressed.png'
-                        Button:#Map
-                            size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/compass_icon.png'
-                            background_down: './assets/gui/main/compass_icon_pressed.png'
-                        Button:#Inventory
-                            size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/backpack_icon.png'
-                            background_down: './assets/gui/main/backpack_icon_pressed.png'
+                Control:
         Screen:
             name: 'mapa'
             RelativeLayout:
                 Map_lvl:
-                FloatLayout:
-                    StackLayout:
-                        orientation: 'tb-rl'
-                        padding: (0, 5, 10, 5)
-                        pos_hint: {'top': 1, 'right': 1}
-                        anchor_x: 'right'#Para alinear el hijo es decir los botones
-                        anchor_y: 'center'
-                        size_hint: .1,.125
-                        Button:#Settings
-                            # size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/setting_icon.png'
-                            background_down: './assets/gui/main/setting_icon_pressed.png'
-                        Button:#Map
-                            size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/compass_icon.png'
-                            background_down: './assets/gui/main/compass_icon_pressed.png'
-                        Button:#Inventory
-                            size_hint: 1,1
-                            border: (0, 0, 0, 0)
-                            background_normal: './assets/gui/main/backpack_icon.png'
-                            background_down: './assets/gui/main/backpack_icon_pressed.png'   
+                Control:   
    
 

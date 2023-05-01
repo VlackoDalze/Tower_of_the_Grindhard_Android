@@ -15,6 +15,7 @@ from kivy.uix.label import Label
 from kivy.app import App
 # hacer esto para importar clases y que no pete al darle a run()
 from scripts.map import Map_lvl
+from scripts.control import Control
 from scripts.menu import Menu
 from scripts.root import Root
 import kivy
