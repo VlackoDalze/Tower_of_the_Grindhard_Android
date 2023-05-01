@@ -21,9 +21,6 @@ from kivy.lang import Builder
 class RootWidget(BoxLayout):
     pass
 
-class CustomLayout(FloatLayout):
-    pass
-
 class Control(Widget):
     pass
 
