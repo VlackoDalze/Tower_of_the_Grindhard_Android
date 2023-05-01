@@ -1,8 +1,8 @@
-from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import NumericProperty
 
 
-class Map_lvl(FloatLayout):
+class Map_lvl(RelativeLayout):
     # definimos la propiedad lvl se puede acceder a ella desde ambos lados self. root.
     lvl = NumericProperty(0)
 
