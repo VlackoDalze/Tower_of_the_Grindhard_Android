@@ -17,13 +17,19 @@ from scripts.control import Control
 from scripts.menu import Menu
 from scripts.login import Login
 from scripts.root import Root
+from scripts.sounds import SoundsMaster
 import kivy
 kivy.require('2.1.0')
 
 
 class TowerOfTheGrindhardApp(App):
     def build(self):
+        self.play_music_loop()
         return Root()
+
+    def play_music_loop(self, *args):
+        SoundsMaster.playMusic()
+        Clock.schedule_once(self.play_music_loop, 2) # Ejecuta el método cada 1 segundos
 
 
 if __name__ == '__main__':
