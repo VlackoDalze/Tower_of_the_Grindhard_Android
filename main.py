@@ -1,4 +1,5 @@
 import kivy
+kivy.require('2.1.0')
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
@@ -10,6 +11,16 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock
 from kivy.core.window import Window
+
+# class Player(Widget):
+#     pass
+
+
+# class GameMap(Widget):
+#     pass
+
+class RootWidget(BoxLayout):
+    pass
 
 class Control(Widget):
     pass
@@ -23,13 +34,13 @@ class Map_lvl(FloatLayout):
         
 class TowerOfTheGrindhardApp(App):
     def build(self):
+
         # return BoxLayout()
-        return Map_lvl()
+        return RootWidget()
     
     # def on_start(self): #maximizar
     #     Window.maximize()
-        
-        
+ 
 if __name__ == '__main__':
     TowerOfTheGrindhardApp().run()
     
