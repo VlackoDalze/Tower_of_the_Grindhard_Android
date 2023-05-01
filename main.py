@@ -10,8 +10,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.uix.label import Label
-
-
 from kivy.app import App
 # hacer esto para importar clases y que no pete al darle a run()
 from scripts.map import Map_lvl
