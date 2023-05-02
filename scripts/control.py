@@ -1,13 +1,11 @@
 from kivy.uix.floatlayout import FloatLayout
-import enum
-
-class Movement(enum.Enum):
-    LEFT = 1
-    UP = 2
-    RIGHT = 3
-    DOWN = 4
+from kivy.uix.button import Button
 
 
 class Control(FloatLayout):
-    def movePlayer(self, movement:Movement):
+    pass
+
+
+class SettingButton(Button):
+    def movePlayer(self, movement):
         print(movement)

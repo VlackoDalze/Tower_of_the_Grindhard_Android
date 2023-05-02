@@ -1,11 +1,11 @@
-<SettingButton@Button>:
+<SettingButton>:
     size_hint: (None, None)
     size: (50,50)
     border: (0, 0, 0, 0)
     background_normal: './assets/gui/main/setting_icon.png'
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
-    on_press: print('Settings')
+    on_press: root.movePlayer("ss")
 
 
 <Root>
@@ -146,7 +146,7 @@
             pos_hint: {'top': .5, 'right': 1}
             border: (0, 0, 0, 0)
             text:'>'
-            on_press: print('Derecha')
+            on_press: Control.movePlayer(Movement.RIGHT)
         Button:#Izquierda
             size_hint: (None, None)
             size: (50,50)
