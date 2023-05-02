@@ -1,3 +1,12 @@
+<SettingButton>:
+    size_hint: (None, None)
+    size: (50,50)
+    border: (0, 0, 0, 0)
+    background_normal: './assets/gui/main/setting_icon.png'
+    background_down: './assets/gui/main/setting_icon_pressed.png'
+    opacity: 0.5
+    on_press: root.openSettings()
+
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
 <Root>
     ScreenManager:
@@ -229,7 +238,7 @@
             background_normal: './assets/gui/main/compass_icon.png'
             background_down: './assets/gui/main/compass_icon_pressed.png'
             opacity: 0.5
-            on_press: print('Mapa')
+            on_press: root.openMap()
         Button:#Inventory
             size_hint: (None, None)
             size: (50,50)
@@ -237,7 +246,7 @@
             background_normal: './assets/gui/main/backpack_icon.png'
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
-            on_press: print('Inventario')
+            on_press: root.openInventory()
     FloatLayout:
         size_hint: (None, None)
         size: 100,100
@@ -248,25 +257,35 @@
             pos_hint: {'top': .5, 'right': 1}
             border: (0, 0, 0, 0)
             text:'>'
-            on_press: Control.movePlayer(Movement.RIGHT)
+            on_press: root.movePlayer("right")
         Button:#Izquierda
             size_hint: (None, None)
             size: (50,50)
             pos_hint: {'top': .5, 'right': 0}
             border: (0, 0, 0, 0)
             text:'<'
-            on_press: print('Izquierda')
+            on_press: root.movePlayer("left")
         Button:#Arriba
             size_hint: (None, None)
             size: (50,50)
             pos_hint: {'top': 1, 'right': .5}
             border: (0, 0, 0, 0)
             text:'^'
-            on_press: print('Arriba')
+            on_press: root.movePlayer("up")
         Button:#Abajo
             size_hint: (None, None)
             size: (50,50)
             pos_hint: {'top': 0, 'right': .5}
             border: (0, 0, 0, 0)
             text:'!'
-            on_press: print('Abajo')
+            on_press: root.movePlayer("down")
+
+<Settings>:
+    id: setting
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Este es un layout'
+        Button:
+            text: 'Cerrar'
+            on_press: root.hide_layout()
