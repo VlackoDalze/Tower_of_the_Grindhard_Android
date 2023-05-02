@@ -1,7 +1,7 @@
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import NumericProperty
 from kivy.utils import platform
-from scripts.control import Control
+from scripts.hub import HUD
 class Map_lvl(RelativeLayout):
     # definimos la propiedad lvl se puede acceder a ella desde ambos lados self. root.
     lvl = NumericProperty(0)

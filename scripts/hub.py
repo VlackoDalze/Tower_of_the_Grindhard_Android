@@ -3,15 +3,8 @@ from kivy.uix.button import Button
 from kivy.properties import BooleanProperty
 
 
-class Control(FloatLayout):
-    def openMap(self):
-        print("map")
-
-    def openInventory(self):
-        print("Inventory")
-
-    def movePlayer(self,movement:str):
-        print(movement)
+class HUD(FloatLayout):
+    pass
 
 class SettingButton(Button):
     def openSettings(self):
@@ -27,7 +20,8 @@ class Settings(FloatLayout):
         self.visible = False
 
 class AndroidControl(FloatLayout):
-    pass
+    def movePlayer(self,movement:str):
+        print(movement)
 
 class NavigationBar(FloatLayout):
     pass

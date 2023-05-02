@@ -15,7 +15,7 @@ from kivy.app import App
 
 # hacer esto para importar clases y que no pete al darle a run()
 from scripts.map import Map_lvl
-from scripts.control import Control
+from scripts.hub import HUD
 from scripts.menus import MenuCreateCharacter,MenuSelectCharacter,MenuSelectNumPlayers,MenuStart
 from scripts.login import Login
 from scripts.root import Root

@@ -34,7 +34,7 @@
             name: 'mapa'
             RelativeLayout:
                 Map_lvl:
-                Control:  
+                HUD:  
         Screen:
             name: 'settings'
             Settings:
@@ -213,7 +213,7 @@
             allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
 
-<Control>:
+<HUD>:
     NavigationBar:
     AndroidControl:
     
@@ -250,7 +250,6 @@
             background_normal: './assets/gui/main/backpack_icon.png'
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
-            on_press: root.openInventory()
             on_press: print('Inventario')
 
 
