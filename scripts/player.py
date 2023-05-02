@@ -301,7 +301,7 @@ class Player(Character):
             return "down"
 
     def move(self, event, assignedKeys):
-        # *HUD area
+        # *Hud area
         movement_speed = super().getCellSize()
         listaKeys = [
             [pygame.K_a, pygame.K_d, pygame.K_w, pygame.K_s, pygame.K_q],

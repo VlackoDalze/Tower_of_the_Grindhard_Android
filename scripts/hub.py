@@ -3,7 +3,7 @@ from kivy.uix.button import Button
 from kivy.properties import BooleanProperty
 
 
-class HUD(FloatLayout):
+class Hud(FloatLayout):
     pass
 
 class SettingButton(Button):
