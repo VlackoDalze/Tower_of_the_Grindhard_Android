@@ -1,7 +1,14 @@
-
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
 <Root>
     ScreenManager:
         id: screen_manager
+        Screen:
+            name: 'start'
+            MenuStart:
+        Screen:
+            name: 'menu_selectNumPlayers'
+            MenuSelectNumPlayers:
+            ButtonSettings:
         Screen:
             name: 'login'
             RelativeLayout:
@@ -11,34 +18,33 @@
                     padding: (0, 10, 5, 0)
                     pos_hint: {'top': 1, 'right': 1}
                     size_hint: .1,.125
-                    Button:#Settings
-                        size_hint: (None, None)
-                        size: (50,50)
-                        border: (0, 0, 0, 0)
-                        background_normal: './assets/gui/main/setting_icon.png'
-                        background_down: './assets/gui/main/setting_icon_pressed.png'
-                        opacity: 0.5
+                    ButtonSettings:
         Screen:
-            name: 'menu'
-            RelativeLayout:
-                Menu:
-                StackLayout:
-                    orientation: 'tb-rl'
-                    padding: (0, 10, 5, 0)
-                    pos_hint: {'top': 1, 'right': 1}
-                    size_hint: .1,.125
-                    Button:#Settings
-                        size_hint: (None, None)
-                        size: (50,50)
-                        border: (0, 0, 0, 0)
-                        background_normal: './assets/gui/main/setting_icon.png'
-                        background_down: './assets/gui/main/setting_icon_pressed.png'
-                        opacity: 0.5
+            name: 'menu_selectCharacter'
+            MenuSelectCharacter:
+        Screen:
+            name: 'menu_createCharacter'
+            MenuCreateCharacter:
+            ButtonSettings:
         Screen:
             name: 'mapa'
             RelativeLayout:
                 Map_lvl:
-                Control:   
+                Control:  
+         
+<ButtonSettings>
+    StackLayout:
+        orientation: 'tb-rl'
+        padding: (0, 10, 5, 0)
+        pos_hint: {'top': 1, 'right': 1}
+        size_hint: .1,.125
+        Button: #Settings
+            size_hint: (None, None)
+            size: (50,50)
+            border: (0, 0, 0, 0)
+            background_normal: './assets/gui/main/setting_icon.png'
+            background_down: './assets/gui/main/setting_icon_pressed.png'
+            opacity: 0.5
 
 <Login>
     id: login_container  # añadir id
@@ -76,16 +82,17 @@
 
         Button:
             text: 'Login'
-            size_hint: 0.8, 0.1
             pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-            on_press:  if login_container.validate_inputs(): app.root.ids.screen_manager.current = 'menu'
+            on_press:  if login_container.validate_inputs(): app.root.ids.screen_manager.current= 'menu_selectCharacter'
             size_hint: 0.25, 0.05
                 
-<Menu>
+<MenuSelectCharacter>
     RelativeLayout:
+
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
-
+        Label:
+            text: 'Seleccion de personaje'
         Image:
             source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
             size_hint: (None, None)  # desactiva tamaño
@@ -94,15 +101,107 @@
             allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
         Button:
-            text: 'Select'
-            size_hint: 0.8, 0.1
-            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-            on_press:  app.root.ids.screen_manager.current = 'mapa'
+            text: 'Seleccionar'
+            pos_hint: {'center_x': 0.75, 'center_y': 0.2}
+            on_press:  
+                app.root.ids.screen_manager.transition = SlideTransition(direction='left')
+                app.root.ids.screen_manager.current = 'mapa'
+            size_hint: 0.25, 0.05
+        Button:
+            text: 'Nuevo Personaje'
+            pos_hint: {'center_x': 0.25, 'center_y': 0.2}
+            on_press: 
+                app.root.ids.screen_manager.transition = SlideTransition(direction='left')
+                app.root.ids.screen_manager.current = 'menu_createCharacter'
+            size_hint: 0.25, 0.05
+        
+
+<MenuStart>
+    id: menu_start
+    RelativeLayout:
+
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Bienvenido a Tower of the Grinhard'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_icon.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Pulse para continuar'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press:  app.root.ids.screen_manager.current = menu_start.verifyPlatform() 
+            size_hint: 0.25, 0.1
+            opacity: 0.8
+
+<MenuCreateCharacter>
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Creacion de personaje'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Crear'
+            pos_hint: {'center_x': 0.75, 'center_y': 0.2}
+            on_press:  
+                app.root.ids.screen_manager.transition = SlideTransition(direction='right')
+                app.root.ids.screen_manager.current= 'menu_selectCharacter'
+                
+            size_hint: 0.25, 0.05
+        Button:
+            text: 'Atras'
+            pos_hint: {'center_x': 0.25, 'center_y': 0.2}
+            on_press: 
+                app.root.ids.screen_manager.transition = SlideTransition(direction='right') 
+                app.root.ids.screen_manager.current = 'menu_selectCharacter' 
             size_hint: 0.25, 0.05
 
+<MenuSelectNumPlayers>   
+    id: menu_num_players     
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Seleccion de numero de jugadores'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: '1 Jugador'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(1)
+            size_hint: 0.25, 0.05  
+        Button:
+            text: '2 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(2)
+            size_hint: 0.25, 0.05  
+        Button:
+            text: '3 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(3)
+            size_hint: 0.25, 0.05 
+        Button:
+            text: '4 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(4)
+            size_hint: 0.25, 0.05    
         
-        
-
 <Map_lvl>:
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana

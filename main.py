@@ -14,14 +14,16 @@ from kivy.app import App
 # hacer esto para importar clases y que no pete al darle a run()
 from scripts.map import Map_lvl
 from scripts.control import Control
-from scripts.menu import Menu
+from scripts.menus import MenuCreateCharacter,MenuSelectCharacter,MenuSelectNumPlayers,MenuStart
 from scripts.login import Login
 from scripts.root import Root
 from scripts.sounds import SoundsMaster
+from scripts.button_settings import  ButtonSettings
+
 import kivy
 kivy.require('2.1.0')
 
-
+print(kivy.__version__)
 class TowerOfTheGrindhardApp(App):
     def build(self):
         self.play_music_loop()
