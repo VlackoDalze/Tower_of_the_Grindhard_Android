@@ -6,18 +6,30 @@ from kivy.properties import BooleanProperty
 class Hud(FloatLayout):
     pass
 
+class ScreenReceiver():
+    screenName = ''
+
+    @staticmethod
+    def saveScreenName(screenName:str):
+        SettingButton.screenName = screenName
+
+    @staticmethod
+    def getScreenName() -> str:
+        return SettingButton.screenName
+
 class SettingButton(Button):
-    def openSettings(self):
-        print("asd")
+
+    def saveScreenName(self,screenName:str):
+        print("saving screen name")
+        ScreenReceiver.saveScreenName(screenName) 
+
+class CloseSettingButton(Button):
+    def getScreenName(self):
+        print("Getting screen name")
+        return ScreenReceiver.getScreenName()
 
 class Settings(FloatLayout):
-    visible = BooleanProperty(False)
-
-    def show_layout(self):
-        self.visible = True
-
-    def hide_layout(self):
-        self.visible = False
+    pass
 
 class AndroidControl(FloatLayout):
     def movePlayer(self,movement:str):

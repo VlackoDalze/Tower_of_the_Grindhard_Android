@@ -20,7 +20,7 @@ from scripts.menus import MenuCreateCharacter,MenuSelectCharacter,MenuSelectNumP
 from scripts.login import Login
 from scripts.root import Root
 from scripts.sounds import SoundsMaster
-from scripts.button_settings import  SettingsButtonContainer
+from scripts.settings_buttons_container import  SettingsButtonContainer
 
 import kivy
 

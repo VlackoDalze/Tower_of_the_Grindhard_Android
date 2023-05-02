@@ -1,12 +1,15 @@
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
-<SettingButton>:
+<SettingButton>:#Open menu layout
     size_hint: (None, None)
     size: (50,50)
     border: (0, 0, 0, 0)
     background_normal: './assets/gui/main/setting_icon.png'
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
-    on_press: app.root.ids.screen_manager.current = 'settings'
+    on_press:
+        root.saveScreenName(app.root.ids.screen_manager.current)
+        app.root.ids.screen_manager.current = 'settings'
+        
 
 <Root>
     ScreenManager:
@@ -33,7 +36,6 @@
         Screen:
             name: 'mapa'
             Map_lvl:
-        
         Screen:
             name: 'settings'
             Settings:
@@ -103,7 +105,7 @@
             pos_hint: {'center_x': 0.75, 'center_y': 0.2}
             on_press:  
                 app.root.ids.screen_manager.transition = SlideTransition(direction='left')
-                app.root.ids.screen_manager.current = 'mapa'
+                app.root.ids.screen_manager.current = 'map'
             size_hint: 0.25, 0.05
         Button:
             text: 'Nuevo Personaje'
@@ -221,15 +223,19 @@
     AndroidControl:
     
 
+<CloseSettingButton>:
+    text: 'Cerrar'
+    on_press:
+        app.root.ids.screen_manager.transition.direction = "right"
+        app.root.ids.screen_manager.current = root.getScreenName()
+
 <Settings>:
     id: settings
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: 'Este es un layout'
-        Button:
-            text: 'Cerrar'
-            on_press: app.root.ids.screen_manager.current= 'menu_selectCharacter'
+        CloseSettingButton:
 
 <NavigationBar>
     StackLayout:
