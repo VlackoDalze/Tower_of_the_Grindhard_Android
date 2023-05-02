@@ -14,4 +14,4 @@ class Map_lvl(RelativeLayout):
 
     def on_pre_enter(self):
         if  platform == 'win':
-            self.add(Control())
+            self.add_widget()
