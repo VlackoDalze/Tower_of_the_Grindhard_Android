@@ -7,8 +7,10 @@
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
     on_press:
-        root.saveScreenName(app.root.ids.screen_manager.current)
-        app.root.ids.screen_manager.current = 'settings'
+        app.root.ids.screen_manager.current = 'map'
+        # root.saveScreenName(app.root.ids.screen_manager.current)
+        # app.root.ids.screen_manager.current = 'settings'
+        
         
 
 <Root>
@@ -40,6 +42,9 @@
         Screen:
             name: 'settings'
             Settings:
+        Screen:
+            name: 'inventory'
+            InventoryScreen:
 
 <SettingsButtonContainer>
     StackLayout:
@@ -119,7 +124,6 @@
 <MenuStart>
     id: menu_start
     RelativeLayout:
-
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
         Label:
@@ -168,7 +172,7 @@
             size_hint: 0.25, 0.05
 
 <MenuSelectNumPlayers>   
-    id: menu_num_players     
+    id: menu_num_players
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
@@ -235,6 +239,8 @@
             text: 'Este es un layout'
         CloseSettingButton:
 
+
+
 <NavigationBar>
     StackLayout:
         orientation: 'tb-rl'
@@ -250,15 +256,19 @@
             background_down: './assets/gui/main/compass_icon_pressed.png'
             opacity: 0.5
             on_press: root.openMap()
-        Button:#Inventory
-            size_hint: (None, None)
-            size: (50,50)
-            border: (0, 0, 0, 0)
-            background_normal: './assets/gui/main/backpack_icon.png'
-            background_down: './assets/gui/main/backpack_icon_pressed.png'
-            opacity: 0.5
-            on_press: print('Inventario')
+        InventoryButton:#Inventory
 
+<InventoryButton>:
+    size_hint: (None, None)
+    size: (50,50)
+    border: (0, 0, 0, 0)
+    background_normal: './assets/gui/main/backpack_icon.png'
+    background_down: './assets/gui/main/backpack_icon_pressed.png'
+    opacity: 0.5
+    on_press:
+        app.root.ids.screen_manager.transition.direction = "left"
+        root.saveScreenName(app.root.ids.screen_manager.current)
+        app.root.ids.screen_manager.current = 'inventory'
 
 <AndroidControl>:
     RelativeLayout:
@@ -302,3 +312,40 @@
             text:'!'
             on_press: root.movePlayer("down")
             disabled: True if root.prop_plataform=='win' else False
+
+<InventoryScreen>:
+    StackLayout:
+        BoxLayout:#Close inventory
+            orientation: 'horizontal'
+            size_hint: 1,.075
+            Label:
+                text:'ll'
+            BackButton:
+                
+        PlayersViewPanel:#Players panel
+            orientation:'vertical'
+            size_hint: .5,.925
+            Label:
+                text:'Hellow World'
+        InventoryBackpacksView:#Inventory panel
+            orientation:'vertical'
+            size_hint: .5,.925
+            StackLayout:
+                Button:
+                    text:'asdf0'
+                Button:
+                    text:'sdwq'
+
+<PlayersViewPanel>
+
+<InventoryBackpacksView>
+
+<BackButton>:
+    size_hint: (None,None)
+    size: 50,50
+    center_x: 0
+    center_y:0
+    text:'<'
+    on_press:
+        app.root.ids.screen_manager.transition.direction = "right"
+        app.root.ids.screen_manager.current = root.getScreenName()
