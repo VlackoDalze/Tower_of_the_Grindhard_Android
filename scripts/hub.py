@@ -1,7 +1,8 @@
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
-from kivy.properties import BooleanProperty
-
+from kivy.properties import NumericProperty,BooleanProperty,StringProperty
+from kivy.utils import platform
+    
 
 class Hud(FloatLayout):
     pass
@@ -32,6 +33,9 @@ class Settings(FloatLayout):
     pass
 
 class AndroidControl(FloatLayout):
+    
+    prop_plataform=StringProperty(platform)
+    
     def movePlayer(self,movement:str):
         print(movement)
     
