@@ -1,4 +1,4 @@
 from kivy.uix.floatlayout import FloatLayout
 
-class ButtonSettings(FloatLayout):
+class ButtonSettingsContainer(FloatLayout):
    pass

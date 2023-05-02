@@ -6,7 +6,7 @@
     background_normal: './assets/gui/main/setting_icon.png'
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
-    on_press: root.openSettings()
+    on_press: app.root.ids.screen_manager.current = 'settings'
 
 <Root>
     ScreenManager:
@@ -17,7 +17,7 @@
         Screen:
             name: 'menu_selectNumPlayers'
             MenuSelectNumPlayers:
-            ButtonSettings:
+            ButtonSettingsContainer:
         Screen:
             name: 'login'
             RelativeLayout:
@@ -27,39 +27,32 @@
                     padding: (0, 10, 5, 0)
                     pos_hint: {'top': 1, 'right': 1}
                     size_hint: .1,.125
-                ButtonSettings:
+                ButtonSettingsContainer:
         Screen:
             name: 'menu_selectCharacter'
             MenuSelectCharacter:
-            ButtonSettings:
+            ButtonSettingsContainer:
         Screen:
             name: 'menu_createCharacter'
             MenuCreateCharacter:
-            ButtonSettings:
+            ButtonSettingsContainer:
         Screen:
             name: 'mapa'
             RelativeLayout:
                 Map_lvl:
                 Control:  
-         
-<ButtonSettings>
+
+<ButtonSettingsContainer>
     StackLayout:
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
         pos_hint: {'top': 1, 'right': 1}
         size_hint: .1,.125
-        Button: #Settings
-            size_hint: (None, None)
-            size: (50,50)
-            border: (0, 0, 0, 0)
-            background_normal: './assets/gui/main/setting_icon.png'
-            background_down: './assets/gui/main/setting_icon_pressed.png'
-            opacity: 0.5
+        SettingButton:
 
 <Login>
     id: login_container  # añadir id
     RelativeLayout:
-        
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
 
@@ -98,7 +91,6 @@
                 
 <MenuSelectCharacter>
     RelativeLayout:
-
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
         Label:
@@ -281,7 +273,7 @@
             on_press: root.movePlayer("down")
 
 <Settings>:
-    id: setting
+    id: settings
     BoxLayout:
         orientation: 'vertical'
         Label:
