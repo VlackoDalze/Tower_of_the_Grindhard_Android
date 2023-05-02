@@ -1,3 +1,4 @@
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
 <SettingButton>:
     size_hint: (None, None)
     size: (50,50)
@@ -7,7 +8,6 @@
     opacity: 0.5
     on_press: root.openSettings()
 
-#:import SlideTransition kivy.uix.screenmanager.SlideTransition
 <Root>
     ScreenManager:
         id: screen_manager
