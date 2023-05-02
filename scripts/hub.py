@@ -22,6 +22,7 @@ class Settings(FloatLayout):
 class AndroidControl(FloatLayout):
     def movePlayer(self,movement:str):
         print(movement)
+    
 
 class NavigationBar(FloatLayout):
     pass
