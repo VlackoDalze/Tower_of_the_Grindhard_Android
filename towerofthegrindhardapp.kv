@@ -214,6 +214,21 @@
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
 
 <Control>:
+    NavigationBar:
+    AndroidControl:
+    
+
+<Settings>:
+    id: settings
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Este es un layout'
+        Button:
+            text: 'Cerrar'
+            on_press: app.root.ids.screen_manager.current= 'menu_selectCharacter'
+
+<NavigationBar>
     StackLayout:
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
@@ -238,7 +253,9 @@
             on_press: root.openInventory()
             on_press: print('Inventario')
 
-    FloatLayout:
+
+<AndroidControl>:
+    RelativeLayout:
         size_hint: (None, None)
         size: 100,100
         pos: '75dp','75dp'
@@ -270,13 +287,3 @@
             border: (0, 0, 0, 0)
             text:'!'
             on_press: root.movePlayer("down")
-
-<Settings>:
-    id: settings
-    BoxLayout:
-        orientation: 'vertical'
-        Label:
-            text: 'Este es un layout'
-        Button:
-            text: 'Cerrar'
-            on_press: root.hide_layout()

@@ -25,3 +25,9 @@ class Settings(FloatLayout):
 
     def hide_layout(self):
         self.visible = False
+
+class AndroidControl(FloatLayout):
+    pass
+
+class NavigationBar(FloatLayout):
+    pass
