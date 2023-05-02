@@ -36,7 +36,7 @@
             MenuCreateCharacter:
             SettingsButtonContainer:
         Screen:
-            name: 'mapa'
+            name: 'map'
             Map_lvl:
             Hud:
         Screen:
@@ -111,7 +111,7 @@
             pos_hint: {'center_x': 0.75, 'center_y': 0.2}
             on_press:  
                 app.root.ids.screen_manager.transition = SlideTransition(direction='left')
-                app.root.ids.screen_manager.current = 'mapa'
+                app.root.ids.screen_manager.current = 'map'
             size_hint: 0.25, 0.05
         Button:
             text: 'Nuevo Personaje'
