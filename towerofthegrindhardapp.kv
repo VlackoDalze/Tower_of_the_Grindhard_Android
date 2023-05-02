@@ -1,5 +1,5 @@
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
-<SettingButton>:
+<SettingButton>:#Open menu layout
     size_hint: (None, None)
     size: (50,50)
     border: (0, 0, 0, 0)
@@ -9,6 +9,7 @@
     on_press:
         root.saveScreenName(app.root.ids.screen_manager.current)
         app.root.ids.screen_manager.current = 'settings'
+        
 
 <Root>
     ScreenManager:
@@ -223,8 +224,8 @@
 <CloseSettingButton>:
     text: 'Cerrar'
     on_press:
-        app.root.ids.screen_manager.current = root.getScreenName()
         app.root.ids.screen_manager.transition.direction = "right"
+        app.root.ids.screen_manager.current = root.getScreenName()
 
 <Settings>:
     id: settings
