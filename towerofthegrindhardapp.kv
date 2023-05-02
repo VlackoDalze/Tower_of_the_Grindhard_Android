@@ -1,4 +1,5 @@
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
+<<<<<<< Updated upstream
 <SettingButton>:
     size_hint: (None, None)
     size: (50,50)
@@ -7,6 +8,8 @@
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
     on_press: root.openSettings()
+=======
+>>>>>>> Stashed changes
 
 <Root>
     ScreenManager:
@@ -20,14 +23,8 @@
             ButtonSettings:
         Screen:
             name: 'login'
-            RelativeLayout:
-                Login:
-                StackLayout:
-                    orientation: 'tb-rl'
-                    padding: (0, 10, 5, 0)
-                    pos_hint: {'top': 1, 'right': 1}
-                    size_hint: .1,.125
-                ButtonSettings:
+            Login:
+            ButtonSettings:
         Screen:
             name: 'menu_selectCharacter'
             MenuSelectCharacter:
@@ -38,9 +35,8 @@
             ButtonSettings:
         Screen:
             name: 'mapa'
-            RelativeLayout:
-                Map_lvl:
-                Control:  
+            Map_lvl:
+        
          
 <ButtonSettings>
     StackLayout:
@@ -246,7 +242,12 @@
             background_normal: './assets/gui/main/backpack_icon.png'
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
+<<<<<<< Updated upstream
             on_press: root.openInventory()
+=======
+            on_press: print('Inventario')
+    
+>>>>>>> Stashed changes
     FloatLayout:
         size_hint: (None, None)
         size: 100,100
