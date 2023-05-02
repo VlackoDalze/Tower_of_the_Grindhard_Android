@@ -20,14 +20,8 @@
             ButtonSettingsContainer:
         Screen:
             name: 'login'
-            RelativeLayout:
-                Login:
-                StackLayout:
-                    orientation: 'tb-rl'
-                    padding: (0, 10, 5, 0)
-                    pos_hint: {'top': 1, 'right': 1}
-                    size_hint: .1,.125
-                ButtonSettingsContainer:
+            Login:
+            ButtonSettings:
         Screen:
             name: 'menu_selectCharacter'
             MenuSelectCharacter:
@@ -41,8 +35,8 @@
             RelativeLayout:
                 Map_lvl:
                 Control:  
-
-<ButtonSettingsContainer>
+         
+<ButtonSettings>
     StackLayout:
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
@@ -239,6 +233,8 @@
             background_down: './assets/gui/main/backpack_icon_pressed.png'
             opacity: 0.5
             on_press: root.openInventory()
+            on_press: print('Inventario')
+
     FloatLayout:
         size_hint: (None, None)
         size: 100,100
