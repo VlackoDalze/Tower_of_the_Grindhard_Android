@@ -2,7 +2,7 @@ from scripts.collider_matrix_maker import get_collider_matrix
 import pygame
 import scripts.setting as setting
 import scripts.ui_element as ui_element
-from scripts.enemy import Enemy
+from scripts.objects.enemy import Enemy
 # Variables statics
 CELL_SIZE = setting.CELL_SIZE
 SCREEN_WIDTH = setting.SCREEN_WIDTH

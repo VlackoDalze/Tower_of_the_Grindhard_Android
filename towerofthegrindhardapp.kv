@@ -1,5 +1,7 @@
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
-<SettingButton>:#Open menu layout
+
+#Open menu layout
+<SettingButton>:
     size_hint: (None, None)
     size: (50,50)
     border: (0, 0, 0, 0)
@@ -7,46 +9,11 @@
     background_down: './assets/gui/main/setting_icon_pressed.png'
     opacity: 0.5
     on_press:
-        app.root.ids.screen_manager.current = 'map'
+        app.root.current = 'screen_map'
         # root.saveScreenName(app.root.ids.screen_manager.current)
-        # app.root.ids.screen_manager.current = 'settings'
-        
-        
+        # app.root.ids.screen_manager.current = 'settings'      
 
-<Root>
-    ScreenManager:
-        id: screen_manager
-        Screen:
-            name: 'start'
-            MenuStart:
-        Screen:
-            name: 'menu_selectNumPlayers'
-            MenuSelectNumPlayers:
-            SettingsButtonContainer:
-        Screen:
-            name: 'login'
-            Login:
-            SettingsButtonContainer:
-        Screen:
-            name: 'menu_selectCharacter'
-            MenuSelectCharacter:
-            SettingsButtonContainer:
-        Screen:
-            name: 'menu_createCharacter'
-            MenuCreateCharacter:
-            SettingsButtonContainer:
-        Screen:
-            name: 'map'
-            Map_lvl:
-            Hud:
-        Screen:
-            name: 'settings'
-            Settings:
-        Screen:
-            name: 'inventory'
-            InventoryScreen:
-
-<SettingsButtonContainer>
+<SettingsButtonContainer>:
     StackLayout:
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
@@ -54,7 +21,7 @@
         size_hint: .1,.125
         SettingButton:
 
-<Login>
+<Login>:
     id: login_container  # añadir id
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
@@ -90,10 +57,10 @@
         Button:
             text: 'Login'
             pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-            on_press:  if login_container.validate_inputs(): app.root.ids.screen_manager.current= 'menu_selectCharacter'
+            on_press:  if login_container.validate_inputs(): app.root.current= 'screen_selectCharacter'
             size_hint: 0.25, 0.05
                 
-<MenuSelectCharacter>
+<MenuSelectCharacter>:
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
@@ -110,18 +77,18 @@
             text: 'Seleccionar'
             pos_hint: {'center_x': 0.75, 'center_y': 0.2}
             on_press:  
-                app.root.ids.screen_manager.transition = SlideTransition(direction='left')
-                app.root.ids.screen_manager.current = 'map'
+                app.root.transition = SlideTransition(direction='left')
+                app.root.current = 'screen_map'
             size_hint: 0.25, 0.05
         Button:
             text: 'Nuevo Personaje'
             pos_hint: {'center_x': 0.25, 'center_y': 0.2}
             on_press: 
-                app.root.ids.screen_manager.transition = SlideTransition(direction='left')
-                app.root.ids.screen_manager.current = 'menu_createCharacter'
+                app.root.transition = SlideTransition(direction='left')
+                app.root.current = 'screen_createCharacter'
             size_hint: 0.25, 0.05      
 
-<MenuStart>
+<MenuStart>:
     id: menu_start
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
@@ -138,11 +105,11 @@
         Button:
             text: 'Pulse para continuar'
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            on_press:  app.root.ids.screen_manager.current = menu_start.verifyPlatform() 
+            on_press:  app.root.current = menu_start.verifyPlatform() 
             size_hint: 0.25, 0.1
             opacity: 0.8
 
-<MenuCreateCharacter>
+<MenuCreateCharacter>:
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
@@ -159,19 +126,19 @@
             text: 'Crear'
             pos_hint: {'center_x': 0.75, 'center_y': 0.2}
             on_press:  
-                app.root.ids.screen_manager.transition = SlideTransition(direction='right')
-                app.root.ids.screen_manager.current= 'menu_selectCharacter'
+                app.root.transition = SlideTransition(direction='right')
+                app.root.current= 'screen_selectCharacter'
                 
             size_hint: 0.25, 0.05
         Button:
             text: 'Atras'
             pos_hint: {'center_x': 0.25, 'center_y': 0.2}
             on_press: 
-                app.root.ids.screen_manager.transition = SlideTransition(direction='right') 
-                app.root.ids.screen_manager.current = 'menu_selectCharacter' 
+                app.root.transition = SlideTransition(direction='right') 
+                app.root.current = 'screen_selectCharacter' 
             size_hint: 0.25, 0.05
 
-<MenuSelectNumPlayers>   
+<MenuSelectNumPlayers>:
     id: menu_num_players
     RelativeLayout:
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
@@ -188,31 +155,29 @@
         Button:
             text: '1 Jugador'
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(1)
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(1)
             size_hint: 0.25, 0.05  
         Button:
             text: '2 Jugadores'
             pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(2)
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(2)
             size_hint: 0.25, 0.05  
         Button:
             text: '3 Jugadores'
             pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(3)
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(3)
             size_hint: 0.25, 0.05 
         Button:
             text: '4 Jugadores'
             pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-            on_press:  app.root.ids.screen_manager.current=menu_num_players.defineNumberOfPlayers(4)
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(4)
             size_hint: 0.25, 0.05    
         
-<Map_lvl>:
-    
+<Map>:
+    id: map_container
     RelativeLayout:
-
         size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
         size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
-
         Image:
             source:  f'scene/level{root.lvl:02d}/_composite.png' #establece el lvl, formato 0? 2digitos
             size_hint: (None, None)  # desactiva tamaño
@@ -220,16 +185,18 @@
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
             allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
             keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Label:
+            id: label_container
+            text:  'sin valor'
 <Hud>:
     NavigationBar:
     AndroidControl:
     
-
 <CloseSettingButton>:
     text: 'Cerrar'
     on_press:
-        app.root.ids.screen_manager.transition.direction = "right"
-        app.root.ids.screen_manager.current = root.getScreenName()
+        app.root.transition.direction = "right"
+        app.root.current = root.getScreenName()
 
 <Settings>:
     id: settings
@@ -239,9 +206,7 @@
             text: 'Este es un layout'
         CloseSettingButton:
 
-
-
-<NavigationBar>
+<NavigationBar>:
     StackLayout:
         orientation: 'tb-rl'
         padding: (0, 10, 5, 0)
@@ -266,9 +231,9 @@
     background_down: './assets/gui/main/backpack_icon_pressed.png'
     opacity: 0.5
     on_press:
-        app.root.ids.screen_manager.transition.direction = "left"
-        root.saveScreenName(app.root.ids.screen_manager.current)
-        app.root.ids.screen_manager.current = 'inventory'
+        app.root.transition.direction = "left"
+        root.saveScreenName(app.root.current)
+        app.root.current = 'inventory'
 
 <AndroidControl>:
     RelativeLayout:
@@ -347,5 +312,5 @@
     center_y:0
     text:'<'
     on_press:
-        app.root.ids.screen_manager.transition.direction = "right"
-        app.root.ids.screen_manager.current = root.getScreenName()
+        app.root.transition.direction = "right"
+        app.root.current = root.getScreenName()

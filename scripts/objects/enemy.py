@@ -1,5 +1,5 @@
 import pygame
-from scripts.statistics import Statistics
+from scripts.others.statistics import Statistics
 import scripts.setting as setting
 from scripts.unique_passive import UniquePassive
 import random

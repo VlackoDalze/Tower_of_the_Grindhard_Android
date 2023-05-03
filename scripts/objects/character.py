@@ -1,4 +1,4 @@
-from scripts.statistics import Statistics
+from scripts.others.statistics import Statistics
 
 class Character():
     def __init__(

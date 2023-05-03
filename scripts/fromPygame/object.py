@@ -1,5 +1,5 @@
 import pygame
-from scripts.statistics import Statistics
+from scripts.others.statistics import Statistics
 from scripts.ui_element import *
 from scripts.setting import SCREEN_WIDTH, SCREEN_HEIGHT
 from scripts.texture_pack import inventory_slot

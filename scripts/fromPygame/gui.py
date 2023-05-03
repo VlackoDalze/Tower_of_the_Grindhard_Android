@@ -2,7 +2,7 @@ import pygame
 from scripts.ui_element import *
 from scripts.players_views import viewsPositions
 from scripts.object import *
-from scripts.player import Player
+from scripts.objects.player import Player
 
 # * Texture
 

@@ -10,18 +10,15 @@ class MenuSelectCharacter(RelativeLayout):
 class MenuStart(RelativeLayout):
     def verifyPlatform(self):
         if platform=='win':
-            return 'menu_selectNumPlayers' 
+            return 'screen_selectNumPlayers' 
         elif platform=='android':
-            return 'login'       
+            return 'screen_login'       
         
 class MenuSelectNumPlayers(RelativeLayout):
-   
-    
-    number_players = NumericProperty(0)
-    def defineNumberOfPlayers(self,num): 
-        MenuSelectNumPlayers.number_players= num
-        print( MenuSelectNumPlayers.number_players)
-        return 'login'
+    def defineNumberOfPlayers(self,num):     
+        self.parent.parent.num_players=num
+        print(  self.parent.parent.num_players)
+        return 'screen_login'
     
     
 class MenuCreateCharacter(RelativeLayout):

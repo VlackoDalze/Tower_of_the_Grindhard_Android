@@ -1,7 +1,7 @@
 import json
 from typing import List, Dict, Annotated
 from random import randint, random, randrange, shuffle, choice
-from scripts.character import Character, GAME_CLASSES
+from scripts.objects.character import Character, GAME_CLASSES
 
 with open('loot/loot_table.json') as loot_table:
         AVAILABLE_POOLS = json.load(loot_table)

@@ -1,11 +1,11 @@
-from scripts.character import Character
+from scripts.objects.character import Character
 from scripts.setting import SILVER_MEDIUM_FONT
 import pygame
 from scripts.collider_matrix_maker import get_collider_matrix
 from scripts.triggers import Triggers
-from scripts.enemy import collision_enemy
+from scripts.objects.enemy import collision_enemy
 from scripts.object import *
-from scripts.statistics import Statistics
+from scripts.others.statistics import Statistics
 import scripts.texture_pack as texture_pack
 
 WHITE = (255, 255, 255)

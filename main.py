@@ -14,27 +14,36 @@ from kivy.uix.label import Label
 from kivy.app import App
 
 # hacer esto para importar clases y que no pete al darle a run()
-from scripts.map import Map_lvl
-from scripts.hub import Hud
-from scripts.menus import MenuCreateCharacter,MenuSelectCharacter,MenuSelectNumPlayers,MenuStart
-from scripts.login import Login
+from scripts.views.map import Map
+from scripts.tools.hub import Hud
+from scripts.views.menus import MenuCreateCharacter, MenuSelectCharacter, MenuSelectNumPlayers, MenuStart
+from scripts.views.login import Login
 from scripts.root import Root
-from scripts.sounds import SoundsMaster
-from scripts.settings_buttons_container import  SettingsButtonContainer
+from scripts.tools.sounds import SoundsMaster
+from scripts.tools.settings_buttons_container import SettingsButtonContainer
 
 import kivy
 
 kivy.require("2.1.0")
-
 print(kivy.__version__)
+
+class StartGame():
+    def start():
+        start=Root()
+        start.addAllScreens()
+        return start
+    
+
 class TowerOfTheGrindhardApp(App):
     def build(self):
         self.playMusicLoop()
-        return Root()
+        self.main=StartGame.start()
+        return self.main
 
     def playMusicLoop(self, *args):
         SoundsMaster.playMusic()
-        Clock.schedule_once(self.playMusicLoop, 2)  # Ejecuta el método cada 1 segundos
+        # Ejecuta el método cada 1 segundos
+        Clock.schedule_once(self.playMusicLoop, 2)
 
     def my_callback(self, instance):
         print("El botón ha sido presionado")
