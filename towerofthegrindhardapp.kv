@@ -1,0 +1,316 @@
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+#Open menu layout
+<SettingButton>:
+    size_hint: (None, None)
+    size: (50,50)
+    border: (0, 0, 0, 0)
+    background_normal: './assets/gui/main/setting_icon.png'
+    background_down: './assets/gui/main/setting_icon_pressed.png'
+    opacity: 0.5
+    on_press:
+        app.root.current = 'screen_map'
+        # root.saveScreenName(app.root.ids.screen_manager.current)
+        # app.root.ids.screen_manager.current = 'settings'      
+
+<SettingsButtonContainer>:
+    StackLayout:
+        orientation: 'tb-rl'
+        padding: (0, 10, 5, 0)
+        pos_hint: {'top': 1, 'right': 1}
+        size_hint: .1,.125
+        SettingButton:
+
+<Login>:
+    id: login_container  # añadir id
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_icon.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+    
+        TextInput:
+            id: username_input
+            hint_text: 'Username' #hint
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55} #ubicacion
+            multiline: False
+            size_hint: 0.25, None #ancho
+            height: self.minimum_height #latura minima
+            halign: 'center' #centrado
+
+        TextInput:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            multiline: False
+            size_hint: 0.25, None
+            height: self.minimum_height
+            halign: 'center'
+
+        Button:
+            text: 'Login'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            on_press:  if login_container.validate_inputs(): app.root.current= 'screen_selectCharacter'
+            size_hint: 0.25, 0.05
+                
+<MenuSelectCharacter>:
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Seleccion de personaje'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Seleccionar'
+            pos_hint: {'center_x': 0.75, 'center_y': 0.2}
+            on_press:  
+                app.root.transition = SlideTransition(direction='left')
+                app.root.current = 'screen_map'
+            size_hint: 0.25, 0.05
+        Button:
+            text: 'Nuevo Personaje'
+            pos_hint: {'center_x': 0.25, 'center_y': 0.2}
+            on_press: 
+                app.root.transition = SlideTransition(direction='left')
+                app.root.current = 'screen_createCharacter'
+            size_hint: 0.25, 0.05      
+
+<MenuStart>:
+    id: menu_start
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Bienvenido a Tower of the Grinhard'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_icon.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Pulse para continuar'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press:  app.root.current = menu_start.verifyPlatform() 
+            size_hint: 0.25, 0.1
+            opacity: 0.8
+
+<MenuCreateCharacter>:
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Creacion de personaje'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: 'Crear'
+            pos_hint: {'center_x': 0.75, 'center_y': 0.2}
+            on_press:  
+                app.root.transition = SlideTransition(direction='right')
+                app.root.current= 'screen_selectCharacter'
+                
+            size_hint: 0.25, 0.05
+        Button:
+            text: 'Atras'
+            pos_hint: {'center_x': 0.25, 'center_y': 0.2}
+            on_press: 
+                app.root.transition = SlideTransition(direction='right') 
+                app.root.current = 'screen_selectCharacter' 
+            size_hint: 0.25, 0.05
+
+<MenuSelectNumPlayers>:
+    id: menu_num_players
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Label:
+            text: 'Seleccion de numero de jugadores'
+        Image:
+            source:  'assets/gui/app_image/tower_of_the_grindhard_background_fhd.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Button:
+            text: '1 Jugador'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(1)
+            size_hint: 0.25, 0.05  
+        Button:
+            text: '2 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(2)
+            size_hint: 0.25, 0.05  
+        Button:
+            text: '3 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(3)
+            size_hint: 0.25, 0.05 
+        Button:
+            text: '4 Jugadores'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            on_press:  app.root.current=menu_num_players.defineNumberOfPlayers(4)
+            size_hint: 0.25, 0.05    
+        
+<Map>:
+    id: map_container
+    RelativeLayout:
+        size_hint: (1, 1)  # establece el tamaño del FloatLayout igual al de la ventana
+        size: self.size  # establece el tamaño del FloatLayout igual al de la ventana
+        Image:
+            source:  f'scene/level{root.lvl:02d}/_composite.png' #establece el lvl, formato 0? 2digitos
+            size_hint: (None, None)  # desactiva tamaño
+            size: self.parent.size  # establece el tamaño de la imagen al tamaño del FloatLayout
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}  # posición de la imagen en el FloatLayout centrado
+            allow_stretch: True  # ajusta la imagen al tamaño del FloatLayout
+            keep_ratio: False  # no conserva la relación de aspecto original de la imagen
+        Label:
+            id: label_container
+            text:  'sin valor'
+<Hud>:
+    NavigationBar:
+    AndroidControl:
+    
+<CloseSettingButton>:
+    text: 'Cerrar'
+    on_press:
+        app.root.transition.direction = "right"
+        app.root.current = root.getScreenName()
+
+<Settings>:
+    id: settings
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Este es un layout'
+        CloseSettingButton:
+
+<NavigationBar>:
+    StackLayout:
+        orientation: 'tb-rl'
+        padding: (0, 10, 5, 0)
+        pos_hint: {'top': 1, 'right': 1}
+        size_hint: .1,.125
+        SettingButton:
+        Button:#Map
+            size_hint: (None, None)
+            size: (50,50)
+            border: (0, 0, 0, 0)
+            background_normal: './assets/gui/main/compass_icon.png'
+            background_down: './assets/gui/main/compass_icon_pressed.png'
+            opacity: 0.5
+            on_press: root.openMap()
+        InventoryButton:#Inventory
+
+<InventoryButton>:
+    size_hint: (None, None)
+    size: (50,50)
+    border: (0, 0, 0, 0)
+    background_normal: './assets/gui/main/backpack_icon.png'
+    background_down: './assets/gui/main/backpack_icon_pressed.png'
+    opacity: 0.5
+    on_press:
+        app.root.transition.direction = "left"
+        root.saveScreenName(app.root.current)
+        app.root.current = 'screen_inventory'
+
+<AndroidControl>:
+    RelativeLayout:
+        size_hint: (None, None)
+        size: 100,100
+        pos: '75dp','75dp'
+        opacity: 0 if root.prop_plataform=='win' else 1
+
+        Button:#Derecha
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': .5, 'right': 1}
+            border: (0, 0, 0, 0)
+            text:'>'
+            on_press: root.movePlayer("right")
+            disabled: True if root.prop_plataform=='win' else False
+
+        Button:#Izquierda
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': .5, 'right': 0}
+            border: (0, 0, 0, 0)
+            text:'<'
+            on_press: root.movePlayer("left")
+            disabled: True if root.prop_plataform=='win' else False
+
+        Button:#Arriba
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': 1, 'right': .5}
+            border: (0, 0, 0, 0)
+            text:'^'
+            on_press: root.movePlayer("up")
+            disabled: True if root.prop_plataform=='win' else False
+
+        Button:#Abajo
+            size_hint: (None, None)
+            size: (50,50)
+            pos_hint: {'top': 0, 'right': .5}
+            border: (0, 0, 0, 0)
+            text:'!'
+            on_press: root.movePlayer("down")
+            disabled: True if root.prop_plataform=='win' else False
+
+<InventoryScreen>:
+    StackLayout:
+        BoxLayout:#Close inventory
+            orientation: 'horizontal'
+            size_hint: 1,.075
+            Label:
+                text:'ll'
+            BackButton:
+                
+        PlayersViewPanel:#Players panel
+            orientation:'vertical'
+            size_hint: .5,.925
+            Label:
+                text:'Hellow World'
+        InventoryBackpacksView:#Inventory panel
+            orientation:'vertical'
+            size_hint: .5,.925
+            StackLayout:
+                Button:
+                    text:'asdf0'
+                Button:
+                    text:'sdwq'
+
+<PlayersViewPanel>
+
+<InventoryBackpacksView>
+
+<BackButton>:
+    size_hint: (None,None)
+    size: 50,50
+    center_x: 0
+    center_y:0
+    text:'<'
+    on_press:
+        app.root.transition.direction = "right"
+        app.root.current = root.getScreenName()
