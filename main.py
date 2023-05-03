@@ -36,6 +36,9 @@ class StartGame():
 
 class TowerOfTheGrindhardApp(App):
     def build(self):
+        #Window.borderless = True  # eliminar el marco de la ventana
+        #Window.fullscreen = True  # todor el marco de la ventana
+        Window.maximize()  # maximizar la ventana
         self.playMusicLoop()
         self.main=StartGame.start()
         return self.main
