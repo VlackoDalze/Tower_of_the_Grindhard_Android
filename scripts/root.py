@@ -21,14 +21,20 @@ class Root(ScreenManager):
         return screen
     
     def addAllScreens(self):
-        self.add_widget(Root.createScreen( 'screen_start',[MenuStart()]))
-        self.add_widget(Root.createScreen( 'screen_selectNumPlayers',[MenuSelectNumPlayers(),SettingsButtonContainer()]))
-        self.add_widget(Root.createScreen( 'screen_login',[Login(),SettingsButtonContainer()]))
-        self.add_widget(Root.createScreen( 'screen_selectCharacter',[MenuSelectCharacter(),SettingsButtonContainer()]))
-        self.add_widget(Root.createScreen( 'screen_createCharacter',[MenuCreateCharacter(),SettingsButtonContainer()]))
-        self.add_widget(Root.createScreen( 'screen_map',[Map(),Hud()]))
-        self.add_widget(Root.createScreen( 'screen_settings',[Settings()]))
-        self.add_widget(Root.createScreen( 'screen_inventory',[InventoryScreen()]))
+        # self.add_widget(Root.createScreen( 'screen_start',[MenuStart()]))
+        # self.add_widget(Root.createScreen( 'screen_selectNumPlayers',[MenuSelectNumPlayers(),SettingsButtonContainer()]))
+        # self.add_widget(Root.createScreen( 'screen_login',[Login(),SettingsButtonContainer()]))
+        # self.add_widget(Root.createScreen( 'screen_selectCharacter',[MenuSelectCharacter(),SettingsButtonContainer()]))
+        # self.add_widget(Root.createScreen( 'screen_createCharacter',[MenuCreateCharacter(),SettingsButtonContainer()]))
+        map=Map()
+        map.setViews(4)
+        self.add_widget(Root.createScreen( 'screen_map',[map,Hud()]))
+
+
+
+        
+        # self.add_widget(Root.createScreen( 'screen_settings',[Settings()]))
+        # self.add_widget(Root.createScreen( 'screen_inventory',[InventoryScreen()]))
  
     def find_screen_by_name(self, screen_name):
         for screen in self.screens:
