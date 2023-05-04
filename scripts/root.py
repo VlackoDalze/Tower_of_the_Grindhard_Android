@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from scripts.views.menus import MenuCreateCharacter, MenuSelectCharacter, MenuSelectNumPlayers, MenuStart
 from scripts.tools.hub import Hud,Settings,InventoryScreen
 from scripts.views.login import Login
-from scripts.views.map import Map
+from scripts.views.map import Map,Sky,Floor,Background
 from scripts.tools.settings_buttons_container import SettingsButtonContainer
 class Root(ScreenManager):
     num_players=NumericProperty(0)
